@@ -20,7 +20,7 @@ if(canvas.getContext){
     ctx.beginPath()
     ctx.arc( xc, yc, radius + 15 , 0, 2*Math.PI)
     ctx.lineWidth=6
-    ctx.strokeStyle='rgb(255,0,0)'
+    ctx.strokeStyle='rgb(255 255,0)'
     ctx.stroke()
 
     // Hour marks
