@@ -2,15 +2,34 @@
 <htmL>
 <head>
     <title> SVG Tutorial </title>
-    <script src="script.jss" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.20.1/moment.js"></script>
+    
+
+    <script src="moment-timezone-with-data.min.js"> </script>
+    
+
+    <script src="script.jss"  defer ></script>
+     
     
     <link  href="style.css" rel="stylesheet" >
 </head> 
 <body>
     <h2>  Watch</h2>
     <canvas id="canvas" width="300" height="300">
-       
+
     </canvas>
+    <p> Select the TimeZone to get current time </p>
+    <select id="timezones">
+        <option selected value="India"> India</option>
+        <option value="Munich"> Munich </option>
+        <option value="Paris"> Paris </option>o
+        <option value="London"> London </option>
+        <option value="New York"> New York </option>
+        <option  value="Chicago"> Chicago </option>
+        <option value="San Francisco"> San Francisco </option>
+
+
+    </select>
 
 </body>
 </html>

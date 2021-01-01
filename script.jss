@@ -1,6 +1,12 @@
+// import { minimalTimezoneSet } from 'compact-timezone-list';
+//import moment from 'moment-timezone'
+// var moment = require('moment-timezone');
+var a = moment.tz("2013-11-18 11:55", "Asia/Taipei")
+console.log(moment.tz.names())
 
 canvas = document.getElementById("canvas")
-
+select = document.getElementById("timezones")
+// console.log(select.options)
 radius=50;
 //center
 xc=100
