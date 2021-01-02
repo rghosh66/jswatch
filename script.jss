@@ -1,11 +1,15 @@
-// import { minimalTimezoneSet } from 'compact-timezone-list';
-//import moment from 'moment-timezone'
-// var moment = require('moment-timezone');
-var a = moment.tz("2013-11-18 11:55", "Asia/Taipei")
+
+// Get all the timezones from moment.js
+
+var timeZones = moment.tz.names()
 console.log(moment.tz.names())
 
+// Update select list with all timezones
+updateTimezoneList()
+
+//draw the canvas
 canvas = document.getElementById("canvas")
-select = document.getElementById("timezones")
+
 // console.log(select.options)
 radius=50;
 //center
@@ -48,11 +52,20 @@ setInterval(drawAllDials, 2000)
 
 //Draw all dials
 function drawAllDials(){
-  now = new Date()
+  curtime = new Date()
+ /* 
   hour = now.getHours()
   minute = now.getMinutes()
   sec = now.getSeconds()
-  
+*/
+  selectedTimezone = document.getElementById("timezones")
+  console.log("Zone"+ selectedTimezone.value + curtime)
+  //Change time to selected timezone 
+
+  updateDigitaltime( moment.tz(curtime,selectedTimezone.value ).format("hh mm a z"))
+  hour = moment.tz(curtime,selectedTimezone.value ).format("hh")
+  minute = moment.tz(curtime,selectedTimezone.value ).format("mm")
+  sec = moment.tz(curtime,selectedTimezone.value ).format("ss")
   hour= (hour>12) ?(hour-12):hour
   console.log("hrs:"+hour+"min=" + minute)
   ctx.save()
@@ -103,13 +116,34 @@ function drawAllDials(){
 
     //draw new seconds dial position
     ctx.moveTo(xc,yc)
-    ctx.strokeStyle = 'black'
+    //ctx.save()
+    //ctx.strokeStyle = 'red'
+    
     ctx.lineWidth = 2
     ctx.lineCap='round'
     ctx.lineTo (x,y)
-    
+   // ctx.stroke()
+   // ctx.restore()
+
     //update the lines
     ctx.stroke()
 
     ctx.restore()
+}
+//Add all the time zones as drop down select options 
+function updateTimezoneList(){
+   select = document.getElementById("timezones")
+   timeZones.forEach(e => {
+     opt = document.createElement("option")
+     opt.value=e.toString()
+     opt.text=e.toString()
+     select.add(opt)
+   })
+}
+
+function updateDigitaltime(time){
+ disp=document.getElementById("digitalDisplay")
+ disp.innerHTML= time
+ console.log("updatetime"+time)
+
 }
