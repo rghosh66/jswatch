@@ -79,8 +79,8 @@ function drawAllDials(){
     theta = (Math.PI/6)*hour + (Math.PI/360)*minute
    
     //compute new hour dial position
-    x=xc + (radius-5) * Math.sin(theta)
-    y=yc - (radius-5) * Math.cos(theta)
+    x=xc + (radius-10) * Math.sin(theta)
+    y=yc - (radius-10) * Math.cos(theta)
 
     //draw new hour dial position
     ctx.beginPath(xc,yc)
